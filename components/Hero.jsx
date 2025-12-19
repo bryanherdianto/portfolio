@@ -2,9 +2,9 @@
 
 import { Typewriter } from 'react-simple-typewriter';
 
-function Hero() {
+function Hero({ cvUrl }) {
     return (
-        <section id="profile" className="flex flex-col md:flex-row justify-center items-center min-h-screen gap-10 px-6 py-16">
+        <section id="profile" className="flex flex-col md:flex-row justify-center items-center gap-10 px-6 pb-16 pt-24">
             <div className="flex justify-center">
                 <img src="/profile-pic.png" alt="Bryan Herdianto profile picture" className="w-[275px] md:w-[400px] h-[275px] md:h-[400px] rounded-full object-cover my-4" />
             </div>
@@ -13,7 +13,7 @@ function Hero() {
                 <h1 className="text-5xl font-bold mb-4 text-center leading-15">Bryan Herdianto</h1>
                 <p className="text-2xl font-medium text-gray-700 mb-8 h-8">
                     <Typewriter
-                        words={['Data Scientist', 'ML Engineer', 'Full-Stack Developer']}
+                        words={['AI & Robotics Enthusiast', 'Data Engineer', 'Full-Stack Developer']}
                         loop={true}
                         cursor
                         cursorStyle="|"
@@ -24,7 +24,7 @@ function Hero() {
                 </p>
                 <div className="mb-8">
                     <button
-                        onClick={() => window.open('/CV_Bryan Herdianto.pdf')}
+                        onClick={() => window.open(cvUrl)}
                         className="flex items-center bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer"
                     >
                         Download CV&ensp;

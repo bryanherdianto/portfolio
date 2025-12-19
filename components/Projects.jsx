@@ -96,12 +96,12 @@ function Projects({ project }) {
                                 <span className="text-gray-600 mb-4 flex-grow">{proj.shortDescription}</span>
                                 <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-200">
                                     <div className="flex space-x-3 items-center">
-                                        <a href={proj.githubLink} target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                                        {proj.githubLink && <a href={proj.githubLink} target="_blank" rel="noopener noreferrer" title="GitHub Repository">
                                             <img src="/github.png" alt="GitHub" className="w-5 h-5 hover:opacity-75" />
-                                        </a>
-                                        <a href={proj.deploymentLink} target="_blank" rel="noopener noreferrer" title="Live Demo/Share">
+                                        </a>}
+                                        {proj.deploymentLink && <a href={proj.deploymentLink} target="_blank" rel="noopener noreferrer" title="Live Demo/Share">
                                             <img src="/globe.svg" alt="Share/Live Demo" className="w-5 h-5 hover:opacity-75" />
-                                        </a>
+                                        </a>}
                                     </div>
                                     <a href={`/${proj.slug}`} className="text-sm text-blue-600 hover:text-blue-800 font-semibold">
                                         Read more &rarr;

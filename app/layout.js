@@ -12,11 +12,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Bryan Herdianto",
-  description: "Bryan Herdianto's Portfolio",
-  icons: {
-    icon: "/bh.svg",
+  metadataBase: new URL("https://www.bryanherdianto.site"),
+  title: {
+    default: "Bryan Herdianto",
+    template: "%s - Bryan Herdianto"
   },
+  description: "Explore my portfolio. A Fullstack Developer and Data Engineer specializing in scalable web solutions, AI integration, and robotics innovation.",
+  twitter: {
+    card: "summary_large_image"
+  },
+  keywords: [
+    "Bryan Herdianto", 
+    "Data Engineer", 
+    "Fullstack Developer", 
+    "Robotics", 
+    "AI", 
+    "Gladiatos UI", 
+    "Humanoid Robots", 
+    "Universitas Indonesia", 
+    "Autonomous Systems"
+  ],
+  alternates: {
+    canonical: "/"
+  }
 };
 
 export default function RootLayout({ children }) {

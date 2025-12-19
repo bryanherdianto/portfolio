@@ -37,6 +37,31 @@ async function getProjectData(slug) {
   return response.allProjects[0];
 }
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const project = await getProjectData(slug);
+
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+      description: 'The requested project could not be found.',
+    };
+  }
+
+  return {
+    title: project.name,
+    description: project.shortDescription,
+    alternates: {
+      canonical: `/${slug}`,
+    },
+    openGraph: {
+      title: project.name,
+      description: project.shortDescription,
+      images: [project.image.url],
+    },
+  };
+}
+
 export default async function ProjectDetailPage({ params }) {
   const { slug } = await params;
   const project = await getProjectData(slug);
@@ -58,10 +83,10 @@ export default async function ProjectDetailPage({ params }) {
     <main className="min-h-screen flex flex-col bg-gray-50">
       <Navbar />
       <section className="py-12 md:py-20 px-4 md:px-6 flex-grow">
-        <div className="max-w-6xl mx-auto rounded-lg overflow-hidden md:p-8">
+        <div className="max-w-6xl mx-auto rounded-lg overflow-hidden">
           <img src={project.image.url} alt={project.name} className="w-full mt-8 h-auto md:h-96 object-cover rounded-lg mb-6 md:mb-8" />
 
-          <div className="px-6 pb-6 md:px-0 md:pb-0">
+          <div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">{project.name}</h1>
 
             <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6 whitespace-pre-line">

@@ -72,6 +72,21 @@ async function getSkillData() {
   return response.skill.skillBlock;
 }
 
+async function getCV() {
+  const response = await client.request(
+    gql`
+      {
+        cv {
+          cv {
+            url
+          }
+        }
+      }
+    `
+  );
+  return response.cv.cv;
+}
+
 async function getProjectData() {
   const response = await client.request(
     gql`
@@ -106,10 +121,11 @@ export default async function Home() {
   const experienceWork = await getExperienceWorkData();
   const skill = await getSkillData();
   const project = await getProjectData();
+  const cv = await getCV();
   return (
     <main className="min-h-screen">
       <Navbar />
-      <Hero />
+      <Hero cvUrl={cv.url} />
       <About />
       <Experience experienceEducation={experienceEducation} experienceWork={experienceWork} />
       <Skills skill={skill} />
